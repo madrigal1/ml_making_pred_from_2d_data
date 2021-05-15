@@ -18,7 +18,13 @@ async function getData() {
     
     // Add a single input layer
     model.add(tf.layers.dense({inputShape: [1], units: 1, useBias: true}));
-    
+
+    //second layer
+    model.add(tf.layers.dense({units: 100, activation: 'relu'}));
+
+    //third layer
+    model.add(tf.layers.dense({units: 50, activation: 'relu'}));
+
     // Add an output layer
     model.add(tf.layers.dense({units: 1, useBias: true}));
   
@@ -76,7 +82,7 @@ function convertToTensor(data) {
     });
     
     const batchSize = 32;
-    const epochs = 50;
+    const epochs = 100;
     
     return await model.fit(inputs, labels, {
       batchSize,
